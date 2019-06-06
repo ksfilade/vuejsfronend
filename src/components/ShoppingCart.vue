@@ -43,7 +43,9 @@ import {
   mapActions,
   mapGetters
 } from 'vuex';
-import CartItem from './cart/CartItem.vue';
+import CartItem from './cart/CartItem.vue'
+import axios from 'axios';
+
 export default {
   computed: {
     ...mapGetters(['cartItemList', 'isLoggedIn', 'products', 'currentUser', 'cartValue'])
@@ -106,6 +108,13 @@ export default {
       }
     },
     checkout() {
+     axios.post('/shopCart', {
+            email: this.currentUser.email,
+            items:this.cartItemList,
+            price:this.cartValue
+          })
+     
+    
       if (this.isLoggedIn) {
         if (!this.cartItemList || this.cartItemList.length == 0) {
           this.addMessage({
@@ -120,9 +129,10 @@ export default {
         } = this.checkValidCart(this.cartItemList, this.products);
 
         if (isValid) {
-          this.saveToTransaction({
-            cartItemList: this.cartItemList,
-            uid: this.currentUser.uid
+          axios.post('/shopCart', {
+            email: this.currentUser.email,
+            items:this.cartItemList,
+            price:this.cartValue
           }).then(() => {
             this.addMessage({
               messageClass: 'success',
