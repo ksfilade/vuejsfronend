@@ -25,6 +25,7 @@
   import { mapActions } from 'vuex';
   import Header from './components/Header.vue';
   import MessageComponent from './components/common/MessageComponent.vue';
+  
   export default {
     components: {
       appHeader: Header,

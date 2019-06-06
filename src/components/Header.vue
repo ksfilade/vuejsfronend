@@ -3,7 +3,9 @@
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <router-link to="/" class="navbar-brand">E-CLASSROOM MARKETPLACE</router-link>
+       <router-link to="/" class="navbar-brand">
+      <img src="/src/assets/logo1.png" style="height:70px;">
+      </router-link>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <router-link to="/login" tag="li" v-if="!isLoggedIn"><a>Login</a></router-link>

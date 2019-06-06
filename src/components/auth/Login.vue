@@ -11,7 +11,7 @@
       </div>
 
       <div class="form-group">
-        <button class="btn btn-success" style="width: 100%" @click.prevent="loginWithEmailLocal" :disabled="isLoading">
+        <button class="btn btn-success" style="width: 100%" @click.prevent="login" :disabled="isLoading">
             <i v-if="isLoading" class="fa fa-spinner fa-spin" />
 						Log in
 					</button>
@@ -34,6 +34,8 @@
 import {
   mapActions
 } from 'vuex';
+
+
 export default {
   data() {
     return {
@@ -65,7 +67,10 @@ export default {
       }).then(() => {
         this.isLoading = false
       })
-    }
+    },
+    login() {
+      this.$auth.loginRedirect()
+    },
   }
 }
 </script>
